@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .board{
+            border: 2px solid gray;
+        }
+        .board-content{
+            display: flex;
+        }
+        .player-zone{
+            background-color: greenyellow;
+            height: 700px;
+            width: 300px;
+           
+        }
+        .card-zone{
+            display: flex;
+            background-color: green;
+            height: 700px;
+            width: 1200px;
+            flex-wrap: wrap;
+        }
+        .player-a{
+            border-left: 2px solid grey;
+            text-align: center;
+        }
+        .player-b{
+            border-left: 2px solid grey;
+            border-top: 2px solid grey;
+            text-align: center;
+        }
+        .player-title{
+            font-size: 20px;
+            height: 175px;
+        }
+        .player-score{
+            font-size: 60px;
+            height: 175px;
+        }
+        .footer{
+            height: 30px;
+        }
+        .new-game-button{
+            width: 100%;
+            height: 100%;
+        }
+        .card{
+            background-color: white;
+            width: 125px;
+            height: 175px;
+            margin: 5px;
+            border-radius: 10px;
+            border: 1px solid gray;
+            box-shadow: 0 0 15px lightgoldenrodyellow;
+        }
+        .card-title{
+            text-align: right;
+            font-size: 30px;
+            margin: 5px;
+        }
+        .card-body{
+            text-align: center;
+            font-size: 35px;
+            margin: 30%;
+        }
+        .face-down{
+            background-color: black;
+            width: 125px;
+            height: 175px;
+            margin: 5px;
+            border-radius: 10px;
+            border: 1px solid purple;
+            box-shadow: 0 0 15px rgb(217, 81, 217);
+        }
+        .face-down .card-body{
+            text-align: center;
+            font-size: 40px;
+            margin: 45%;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="board" >
+        <div class="board-content">
+          <div class="card-zone">
+            
+          </div>
+          <div class="player-zone">
+            <div class="player-a">
+              <div class="player-title">
+                Player A
+              </div>
+              <div class="player-score">
+                0
+              </div>
+            </div>
+            <div class="player-b">
+              <div class="player-title">
+                Player B
+              </div>
+              <div class="player-score">
+                0
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+            <button  onclick="renderCardList()" class="new-game-button">New Game</button>
+        </div>
+      </div>      
+
+
+    <script>
+        var cardList = [
+        { value: ['♣', 'A'], isFaceDown: true },
+        { value: ['♣', '2'], isFaceDown: false },
+        { value: ['♣', '3'], isFaceDown: true },
+        { value: ['♣', '4'], isFaceDown: false },
+        { value: ['♣', '5'], isFaceDown: true },
+        { value: ['♣', '6'], isFaceDown: true },
+        { value: ['♣', '7'], isFaceDown: true },
+        { value: ['♣', '8'], isFaceDown: false },
+        { value: ['♣', '9'], isFaceDown: true },
+        { value: ['♣', '10'], isFaceDown: true },
+        { value: ['♣', 'J'], isFaceDown: true },
+        { value: ['♣', 'Q'], isFaceDown: true },
+        { value: ['♣', 'K'], isFaceDown: false },
+        { value: ['♥', 'A'], isFaceDown: true },
+        { value: ['♥', '2'], isFaceDown: true },
+        { value: ['♥', '3'], isFaceDown: false },
+        { value: ['♥', '4'], isFaceDown: false },
+        { value: ['♥', '5'], isFaceDown: true },
+        { value: ['♥', '6'], isFaceDown: false },
+        { value: ['♥', '7'], isFaceDown: true },
+        { value: ['♥', '8'], isFaceDown: true },
+        { value: ['♥', '9'], isFaceDown: true },
+        { value: ['♥', '10'], isFaceDown: true },
+        { value: ['♥', 'J'], isFaceDown: true },
+        { value: ['♥', 'Q'], isFaceDown: true },
+        { value: ['♥', 'K'], isFaceDown: false },
+  ]
+
+  function htmlToElem(html) {
+  let temp = document.createElement('template');
+  html = html.trim(); // Never return a space text node as a result
+  temp.innerHTML = html;
+  return temp.content.firstChild;
+}
+
+function renderCardList() {
+  // TODO: define cardZoneElm here
+  const cardZoneElm = document.getElementsByClassName("card-zone")
+  // before append any DOM(s), you need to clear all children of cardZoneElm
+	for (var idx=0; idx < cardList.length; idx++) {
+		// TODO:
+		// if isFaceDown is true, create a card component with 'face-down' class
+        if(cardList[idx].isFaceDown===true){
+		cardElm = htmlToElem(
+			`<div class="card"><div class="card-title">♣</div><div class="card-body">9</div></div>`
+		);
+        }else{
+            cardElm = htmlToElem(
+                `<div class="card face-down"><div class="card-title"></div><div class="card-body">?</div></div>`
+            );
+        }
+		cardZoneElm[0].append(cardElm)
+  }
+}
+    </script>
+    
+</body>
+</html>

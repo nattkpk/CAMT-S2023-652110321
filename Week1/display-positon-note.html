@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .dashed-box {
+            margin: 10px;
+            padding: 20px;
+            border: 1px  dashed gray;
+            background-color: rgba(150, 255, 160, 0.515);
+            position: relative;
+        }
+        .a-box {
+            padding: 20px;
+            background-color: rgb(84, 255, 164);
+        }
+        .b-box {
+            padding: 20px;
+            background-color: orange;
+        }
+        .c-box {
+            padding: 20px;
+            background-color: yellow;
+        }
+        .d-box {
+            padding: 10px;
+            background-color: green;
+        }
+        .e-box {
+            padding: 10px;
+            background-color: purple;
+        }
+        .f-box {
+            padding: 10px;
+            background-color: red;
+        }
+
+        .number2{
+            display: inline-flex;
+        }
+        nav li {
+            display: inline-block;
+        }
+        .hidden {
+            visibility: hidden;
+        
+        }
+        .none {
+            display: none;
+        }
+    
+        .display-box {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(255, 0, 204);
+            position: static;
+        }
+        .display2-box {
+            height: 10px;
+            background-color: rgb(255, 0, 204);
+            position: static;
+        }
+
+        .fixed-wh .dashed-box .display-box{
+            position: absolute;
+            height: 100px;
+            width: 400px;
+           
+        }
+
+        .nofixed-wh {
+            position: absolute;
+            width: 100%;
+       
+        }
+        .nofixed-wh .display-box {
+            width: 110%;
+            height: unset;
+            padding: 2px;
+        }
+        .white-box {
+                padding: 100px;
+                background-color: white;
+        }
+        .white-box b {
+            border-radius: 50px;
+            background-color: gray;
+            padding: 10px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: white;
+        }
+
+        .floatsongkran {
+            position: absolute;
+            align-items: center;
+            color: rgb(214, 252, 177);
+            z-index: 10;
+        }
+
+        .box {
+            position: fixed;
+            background-color: rgb(119, 109, 112);
+            padding: 50px;
+            text-align: center;
+            transform: translateY(180%);
+            right: 50px;
+          
+        }
+
+    </style>
+</head>
+ 
+<body>
+    
+
+    <div class="floatsongkran">
+        <div class="box">
+            <h1>Display Something</h1>
+        </div>
+   
+ 
+    
+</div>
+    <h1>Box Model</h1>
+    <div class="dashed-box">
+        <div class="a-box">
+            <div class="b-box">
+                <div class="c-box">
+                    <div class="d-box"><h3>Simple Box</h3></div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <h1>CSS Display</h1><br>
+    <h2>inline</h2><br>
+    <div class="dashed-box">
+        <div class="number2">
+            <div class="c-box">inline text1</div>
+            <div class="b-box">inline text2</div>
+            <div class="f-box">   inline text3</div>
+            <div class="d-box"> inline text3</div>
+            <div class="e-box"> inline text3</div>
+        </div>
+    </div><br>
+    
+    <h2>Block</h2><br>
+    <div class="dashed-box">
+        <div class="number22">
+            <div class="c-box">block text1</div>
+            <div class="b-box">block text2</div>
+            <div class="f-box">   block text3</div>
+            <div class="d-box"> block text3</div>
+            <div class="e-box"> block text3</div>
+        </div>   
+    </div><br>
+
+    <h2>inline-block</h2>
+    <br><div class="dashed-box">
+        <nav>
+            <li><h3 style="background-color: red;">apple</h3></li>
+            <li><h3 style="background-color: rgb(84, 255, 164);">orange</h3></li>
+            <li><h3 style="background-color: rgb(86, 79, 218);">mango</h3></li>
+            <li><h3 style="background-color: rgb(94, 217, 28);">watermelon</h3></li>
+        </nav>   
+    </div>
+
+    <h2>none</h2>
+    <br><div class="dashed-box">
+        <nav>
+            <li><h3>apple</h3></li>
+            <li class="none"><h3>orange</h3></li>
+            <li><h3>mango</h3></li>
+            <li ><h3>watermelon</h3></li>
+        </nav> 
+    </div>
+    <h2>display:none vs visibility:hidden</h2>
+    <br><div class="dashed-box">
+        <nav>
+            <li><h3>apple</h3></li>
+            <li class="none"><h3>orange</h3></li>
+            <li class="hidden"><h3>mango</h3></li>
+            <li><h3>watermelon</h3></li>
+        </nav> 
+    </div>
+
+    <h1>CSS Position</h1>
+    <br>
+    <h2>static</h2>
+    <br>
+    <div class="static-content">
+        <div class="dashed-box">
+            <div class="display-box"></div>
+        </div>
+    </div>
+    
+
+    <h2>absolute</h2>
+    <br>
+    <h3>fixed width/height</h3>
+    <div class="fixed-wh">
+        <div class="dashed-box">
+            <div class="display-box"></div>
+        </div>
+    </div>
+
+    <br><br><br><br><br>
+    <h3>no fixed width/height</h3>
+    <div class="nofixed-wh">
+        <div class="dashed-box">
+            <div class="display2-box"></div>
+        </div>
+    </div>
+
+    <br><br><br><br><br>
+    <h3>fixed width/height + right-top</h3>
+    <div class="fixed-wh-rt">
+        <div class="dashed-box">
+            <div class="white-box">
+                <b>X</b>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

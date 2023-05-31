@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Cards Example</title>
+    <style>
+body{
+    background-color: green;
+    min-height: 100px;
+    min-width: 300px;
+}
+
+.countRed{
+    text-align:left ;
+}
+
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0 150px 0;
+}
+
+.card {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 200px;
+    min-height: 350px;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.4s ;
+
+   
+}
+
+.type {
+    text-align: right;
+    font-size: 50px;
+}
+
+.number {
+    margin-top: 30%;
+    text-align: center;
+    font-size: 100px;
+}
+
+.card:hover {
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-10px);
+}
+.card:active {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: -10px;
+    transform: rotateY(180deg);
+    
+}
+
+
+.footer {
+    background-color: lightgray;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    
+}
+
+.footer button {
+    width: 100%;
+    font-size: 50px;
+    height: 100%;
+    background-color: lightgray;
+    border: none;
+}
+
+.footer :hover {
+    background-color: red;
+    color: white;
+    transition: all 0.3s ease-out;
+}
+
+.footer :active{
+    background-color: white;
+    color: red;
+    transition: all 0.05s ease-out;
+  
+}
+
+
+    </style>
+  </head>
+  <body>
+    <div class = "table">
+   
+      <div class="card">
+        <div class="type"></div>
+        <div class= "number"></div>
+      </div>
+      <div class="card">
+        <div class="type"></div>
+        <div class= "number"></div>
+      </div>
+      <div class="card">
+        <div class="type"></div>
+        <div class= "number"></div>
+      </div>
+      <div class="card">
+        <div class="type"></div>
+        <div class= "number"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <button id="ok" onclick="bRandom()">Click to Random</button>
+    </div>
+
+<script>
+    // card number and type
+    var CARD_TYPE = ['♣', '♦', '♥', '♠']
+    var CARD_NUMBER = ['A', '1', '2', '3', '4', '5', '6',' 7', '8', '9', '10', 'J', 'Q', 'K']
+
+    // random function
+    // max: number > 0
+    // return [0, max -1]
+    function random(max) {
+       return parseInt(Math.random() * max) % max
+    }
+
+    // how to use random function
+    var cardType = CARD_TYPE[random(CARD_TYPE.length)]
+    var cardNumber = CARD_NUMBER[random(CARD_NUMBER.length)]
+    console.log(cardType, cardNumber)
+
+    const cards = document.getElementsByClassName("card")
+   
+
+
+   for (let i = 0; i < cards.length; i++) {
+    var cardType = CARD_TYPE[random(CARD_TYPE.length)]
+    var cardNumber = CARD_NUMBER[random(CARD_NUMBER.length)]
+    
+    if (cardType === '♦' || cardType === '♥') {
+        cards[i].querySelector(".type").innerHTML = cardType.fontcolor("red")
+        cards[i].querySelector(".number").innerHTML = cardNumber.fontcolor("red")
+        cards[i].style.border = "3px solid red";
+        
+    
+        
+    } else {
+        cards[i].querySelector(".type").innerHTML = cardType
+        cards[i].querySelector(".number").innerHTML = cardNumber
+        cards[i].style.border = "3px solid black";
+
+
+    }
+       // delete function
+    cards[i].addEventListener("dblclick", function() {
+            this.remove();
+        });
+
+     
+    
+
+}
+
+function bRandom() {
+    if(cards.length == 0){cards.length = 4;}
+    for (let i = 0; i < cards.length; i++) {
+        var cardType = CARD_TYPE[random(CARD_TYPE.length)]
+        var cardNumber = CARD_NUMBER[random(CARD_NUMBER.length)]
+
+        if (cardType === '♦' || cardType === '♥') {
+            cards[i].querySelector(".type").innerHTML = cardType.fontcolor("red")
+            cards[i].querySelector(".number").innerHTML = cardNumber.fontcolor("red")
+            cards[i].style.border = "3px solid red";
+
+
+
+        } else {
+            cards[i].querySelector(".type").innerHTML = cardType
+            cards[i].querySelector(".number").innerHTML = cardNumber
+            cards[i].style.border = "3px solid black";
+        }
+        
+
+    
+    }
+
+}
+</script>
+</body>
+</html>
